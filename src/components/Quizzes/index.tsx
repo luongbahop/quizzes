@@ -7,10 +7,11 @@ import Score from '../Score';
 import './Quizzes.css';
 
 interface Props {
+  isNewQuiz: boolean;
   quizzes: Quiz[];
 }
 
-const Quizzes: React.FC<Props> = ({ quizzes }) => {
+const Quizzes: React.FC<Props> = ({ isNewQuiz, quizzes }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [currentQuizzes, setCurrentQuizzes] = useState<Quiz[]>([]);
@@ -20,7 +21,7 @@ const Quizzes: React.FC<Props> = ({ quizzes }) => {
     currentQuizzes.every((quiz) => !!quiz.selected_answer);
 
   const isSubmitted =
-    location?.pathname === '/result' && !!location?.state?.quizzes;
+    !isNewQuiz && location?.pathname === '/result' && !!location?.state?.quizzes;
 
   const handleAnswerClick = (order: number, answer: string) => {
     if (isSubmitted) {
@@ -61,6 +62,7 @@ const Quizzes: React.FC<Props> = ({ quizzes }) => {
 
   return (
     <div className="quiz-list">
+      {isSubmitted && <h4>Results</h4>}
       {currentQuizzes.map((quiz, index) => (
         <QuizItem
           key={index}

@@ -52,7 +52,7 @@ const QuizForm: React.FC<Props> = ({ filters, categories, onSubmit }) => {
             className="mr-sm-2"
           >
             <option value={0} disabled>
-              Select a Category
+              Select a category
             </option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -71,7 +71,7 @@ const QuizForm: React.FC<Props> = ({ filters, categories, onSubmit }) => {
             className="mr-sm-2"
           >
             <option value="" disabled>
-              Select Difficulty
+              Select difficulty
             </option>
             {DIFFICULTY_LEVELS.map((level) => (
               <option key={level.value} value={level.value}>
