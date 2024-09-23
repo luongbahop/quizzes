@@ -19,9 +19,6 @@ function QuizPage() {
     difficulty: "",
   });
 
-  const isSubmitted =
-    location?.pathname === "/result" && !!location?.state?.quizzes;
-
   const handleSubmit = async (filters: Filters) => {
     try {
       setError(false);
